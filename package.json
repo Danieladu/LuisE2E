@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
-    "test-Azure":"node index.js"
+    "testAzure":"node index.js"
   },
   "author": "",
   "license": "MIT",
