@@ -25,10 +25,14 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         environment: 'AzureStack'
 
-    - name: Azure CLI script
+    - name: test Azure CLI script
       uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
           az storage -h
+
+    - name: Test
+      run: |
+        npm run testAzure
