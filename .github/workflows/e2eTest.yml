@@ -25,6 +25,10 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         environment: 'AzureStack'
 
-    - name: test pipeline
-      run: |
-        az webapp list
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az account show
+          az storage -h
