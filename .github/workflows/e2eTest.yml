@@ -3,7 +3,7 @@ name: Composer E2E test
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'testFolder/**'
 
