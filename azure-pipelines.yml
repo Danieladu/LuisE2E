@@ -1,0 +1,41 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+# - job: RunComposerBotJob
+#  steps:
+#  - task: NodeTool@0
+#    inputs:
+#      versionSpec: '14.x'
+#    displayName: 'Install Node.js'
+
+#  - script: |
+#      npm install
+#      npm run build
+#      npm run start
+#    displayName: 'start Composer bot'
+
+- job: TestJob
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+    displayName: 'Install Node.js'
+
+  - task: AzureCLI@2
+    displayName: Azure CLI
+    inputs:
+      azureSubscription: STCA-Bing Next Official Account - Int
+      scriptType: ps
+      scriptLocation: inlineScript
+      inlineScript: |
+        az --version
+        az account show
+
+#  - script: |
+#      npm install
+#      npm run test
+#    displayName: 'npm install and build'
