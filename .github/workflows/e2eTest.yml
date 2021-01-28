@@ -1,0 +1,30 @@
+name: Composer E2E test
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'testFolder/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Set up Node.js version
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    
+    - name: Azure Login
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        environment: 'AzureStack'
+
+    - name: test pipeline
+      run: |
+        az webapp list
